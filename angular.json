@@ -25,6 +25,7 @@
               }
             ],
             "styles": [
+              "src/custom-theme.scss",
               "src/styles.css"
             ]
           },
@@ -82,8 +83,14 @@
               }
             ],
             "styles": [
+              "src/custom-theme.scss",
               "src/styles.css"
-            ]
+            ],
+            "stylePreprocessorOptions": {
+            "includePaths": [
+                "node_modules"
+              ]
+            }
           }
         }
       }
