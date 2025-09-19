@@ -19,7 +19,7 @@ export class LoginComponent {
   public password: string = ''
 
   constructor(private router: Router) {
-    if (UserService.getActiveUser()) {
+    if (UserService.getActiveUser()) {   //ako je korisnik ulogovan preusmeri na str user
       router.navigate(['/user'])
       return
     }

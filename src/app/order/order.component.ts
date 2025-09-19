@@ -48,7 +48,8 @@ export class OrderComponent {
       },
       confirmButtonColor: "#52d25bff",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Sačuvaj rezervaciju!"
+      confirmButtonText: "Sačuvaj rezervaciju!",
+      cancelButtonText: "Otkaži"
     }).then((result) => {
       if (result.isConfirmed) {
         const orderCreationResult = UserService.createOrder({
