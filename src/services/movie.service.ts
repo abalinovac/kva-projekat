@@ -4,7 +4,7 @@ const client = axios.create({
     baseURL: 'https://movie.pequla.com/api',
     headers: {
         'Accept': 'application/json',
-        'X-Client-Name': 'kva-projekat1'
+        'X-Client-Name': 'kva-projekat'
     },
     validateStatus: (status: number) => {
         return status === 200
