@@ -31,6 +31,6 @@ export class LoginComponent {
       return
     }
 
-    alert('Pogrešan email ili password!')
+    alert('Pogrešan email ili lozinka!')
   }
 }
