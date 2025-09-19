@@ -1,0 +1,66 @@
+<div class="wrapper" *ngIf="movies$ | async as movie">
+  <div class="img-container">
+    <img [src]="movie.poster" [alt]="movie.title">
+  </div>
+  <mat-card class="movie-card" appearance="outlined">
+    <mat-card-content>
+
+      <h2>{{movie.title}}</h2>
+
+      <mat-list role="list">
+        <mat-list-item>
+          <span matListItemTitle>ID:</span>
+          <span matListItemLine>{{movie.movieId}}</span>
+          <span matListItemIcon><i class="fa-solid fa-hashtag"></i></span>
+        </mat-list-item>
+
+        <mat-list-item>
+          <span matListItemTitle>Originalni naziv:</span>
+          <span matListItemLine>{{movie.originalTitle}}</span>
+          <span matListItemIcon><i class="fa-solid fa-heading"></i></span>
+        </mat-list-item>
+
+        <mat-list-item>
+          <span matListItemTitle>Žanr:</span>
+          <span matListItemLine>{{getGenres(movie)}}</span>
+          <span matListItemIcon><i class="fa-solid fa-tag"></i></span>
+        </mat-list-item>
+
+        <mat-list-item>
+          <span matListItemTitle>Glumci:</span>
+          <span matListItemLine>{{getActors(movie)}}</span>
+          <span matListItemIcon><i class="fa-solid fa-users"></i></span>
+        </mat-list-item>
+
+        <mat-list-item>
+          <span matListItemTitle>Datum Prikazivanja:</span>
+          <span matListItemLine>{{movie.startDate}}</span>
+          <span matListItemIcon><i class="fa-solid fa-calendar"></i></span>
+        </mat-list-item>
+
+        <mat-list-item>
+          <span matListItemTitle>Opis:</span>
+          <span matListItemLine>{{movie.description}}</span>
+          <span matListItemIcon><i class="fa-solid fa-book"></i></span>
+        </mat-list-item>
+
+        <mat-list-item>
+          <span matListItemTitle>Trajanje filma:</span>
+          <span matListItemLine>{{movie.runTime}}</span>
+          <span matListItemIcon><i class="fa-solid fa-clock"></i></span>
+        </mat-list-item>
+
+        
+
+      </mat-list>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <a mat-button [routerLink]="['/details/' + movie.movieId + '/order']">
+        <i class="fa-solid fa-cart-shopping"></i> Rezerviši
+      </a>
+    </mat-card-actions>
+  </mat-card>
+</div>
+
+<app-loading *ngIf="!(movies$ | async)" />

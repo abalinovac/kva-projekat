@@ -1,18 +1,54 @@
+export interface Director {
+    directorId: number;
+    name: string;
+    createdAt: string;
+}
+
+export interface Actor {
+    actorId: number;
+    name: string;
+    createdAt: string;
+}
+
+export interface MovieActor {
+    movieActorId: number;
+    movieId: number;
+    actorId: number;
+    actor: Actor;
+}
+
+export interface Genre {
+    genreId: number;
+    name: string;
+    createdAt: string;
+}
+
+export interface MovieGenre {
+    movieGenreId: number;
+    movieId: number;
+    genreId: number;
+    genre: Genre;
+}
+
+// --- Glavni Interfejs za Film (MovieModel) ---
 
 export interface MovieModel {
-    id: number
-    type: {
-        id: number
-        name: string
-    }
-    flightKey: string
-    flightNumber: string
-    destination: string
-    scheduledAt: string
-    estimatedAt: null | string
-    connectedType: number
-    connectedFlight: string
-    plane: string
-    gate: null | string
-    terminal: string
+    movieId: number;
+    internalId: string;
+    corporateId: string;
+    directorId: number;
+    title: string;
+    originalTitle: string;
+    description: string;
+    shortDescription: string;
+    poster: string;     
+    startDate: string; 
+    shortUrl: string;
+    runTime: number;
+    active: boolean;
+    createdAt: string; 
+    updatedAt: string | null;
+    director: Director;
+    movieActors: MovieActor[];
+    movieGenres: MovieGenre[];
 }

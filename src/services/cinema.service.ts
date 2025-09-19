@@ -1,35 +1,36 @@
-import axios from "axios";
-import { scheduled } from "rxjs";
-import { scheduleArray } from "rxjs/internal/scheduled/scheduleArray";
-
-const client = axios.create({
-    baseURL: 'https://flight.pequla.com/api',
-    headers: {
-        'Accept': 'application/json',
-        'X-client-name': 'KVA/2025'
-    },
-
-    validateStatus: (status: number) => {
-        return status === 200
-        //samo ako je 200 vrati response
-    }
-})
+import { CinemaModel } from "../models/cinema.model";
 
 export class CinemaService {
-    static async getMovies(page: number = 0, size: number = 10) {
-        return client.request({
-            url:'/flight',
-            method: 'GET',
-            params: {
-                'page': page,
-                'size': size,
-                'sort': 'scheduledAt,asc',
-                'type': 'departure',
+    static getCinemas(): CinemaModel[] {
+        return [
+            {
+                id: 1,
+                name: 'Cineplexx - TC Ušće',
+                city: 'Beograd',
+                website: 'https://www.cineplexx.rs/info/price-list/CINEPLEXX-USCE-SHOPPING-CENTER'
+            },
+            {
+                id: 2,
+                name: 'CineStar 4DX Ada Mall',
+                city: 'Beograd',
+                website: 'https://cinestarcinemas.rs/beograd-ada-mall'
+            },
+            {
+                id: 3,
+                name: 'Kinoteka',
+                city: 'Beograd',
+                website: 'https://www.kinoteka.org.rs/jugoslovenska-kinoteka-kosovska-11/'
+            },
+            {
+                id: 4,
+                name: 'Roda Sinepleks',
+                city: 'Beograd',
+                website: 'http://www.rodacineplex.com/repertoar'
             }
-        })
+        ]
     }
 
-    static async getMoviesById(id: number){
-        return client.get('/flight/' + id)
+    static getCinemaById(id: number) {
+        return this.getCinemas().find(cinema => cinema.id === id)
     }
 }
